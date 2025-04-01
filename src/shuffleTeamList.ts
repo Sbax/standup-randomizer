@@ -6,20 +6,12 @@ export function shuffleTeamList(array: string[], times: number = 3): string[] {
       .map(({ value }) => value);
   }
 
-  const result: string[] = [];
-  let previousArray: string[] = [];
-
-  for (let i = 0; i < times; i++) {
-    let currentArray = shuffle(array);
-    while (
-      previousArray.length > 0 &&
-      previousArray[previousArray.length - 1] === currentArray[0]
-    ) {
-      currentArray = shuffle(array);
+  return Array.from({ length: times }).reduce((result: string[]) => {
+    const shuffled = shuffle(array);
+    if (shuffled[0] === result[result.length - 1]) {
+      return [...result, ...shuffled.reverse()];
     }
-    result.push(...currentArray);
-    previousArray = currentArray;
-  }
 
-  return result;
+    return [...result, ...shuffled];
+  }, []);
 }
