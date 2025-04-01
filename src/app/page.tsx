@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 
 import { addDaysToDate } from "@/addDaysToDate";
-import { shuffleTeamList } from "@/shuffleTeamList";
+import { shuffleArray } from "@/shuffleArray";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 export default function Home() {
@@ -30,7 +30,7 @@ export default function Home() {
       return;
     }
 
-    setShuffledTeamList(shuffleTeamList(teamList));
+    setShuffledTeamList(shuffleArray(teamList));
   };
 
   useEffect(() => getShuffleTeamList(), [teamList]);

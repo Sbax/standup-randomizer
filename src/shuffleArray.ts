@@ -1,4 +1,4 @@
-export function shuffleTeamList(array: string[], times: number = 3): string[] {
+export function shuffleArray(array: string[], times: number = 3): string[] {
   function shuffle(array: string[]): string[] {
     return [...array]
       .map((value) => ({ value, sort: Math.random() }))
